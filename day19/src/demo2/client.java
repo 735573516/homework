@@ -1,7 +1,11 @@
 package demo2;
+
+
 import java.io.*;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.Scanner;
+
 public class client {
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket ( "192.168.1.204", 5556);
@@ -27,7 +31,7 @@ public class client {
                 }
             }
         }
-        new Thread (  ){//收消息线程
+        new Thread ( new Runnable ( ) {//收消息线程
             @Override
             public void run() {
                 try {
@@ -37,26 +41,15 @@ public class client {
                         String s2 = new String ( bytes, 0, read );
                         String[] str = s2.split ( "-" );
                         if (str[0].equals ( "d" )){
-
                             if (str.length==2){
                                 System.out.print ("当前聊天室中的成员有：" );
                                 String[] split1 = str[1].split ( "," );
                                 for (String s:split1){
                                     System.out.print (s+"  " );
                                 }
-                            }else if (str.length==3){
-                                String[] split1 = str[2].split ( "_" );
-                                for (String ss:split1){
-                                    String[] split2 = ss.split ( "%" );
-                                    System.out.println (split2[0]+"发来消息："+split2[1]);
-                                }
-                                System.out.print ("当前聊天室中的成员有：" );
-                                String[] split2 = str[1].split ( "," );
-                                for (String s:split2){
-                                    System.out.print (s+"  " );
-                                }
-                                System.out.println ( "/r/n");
+                                System.out.println ( );
                             }
+
                         }else if (str[0].equals ( "e" )){
                             if (str.length==1){break;}
                             else if (str.length==2){
@@ -68,12 +61,10 @@ public class client {
                                 break;
                             }
                         }else if (str[0].equals ( "b" )){
-                            if (str.length==2){
-                                String[] split1 = str[1].split ( "_" );
-                                for (String s:split1){
-                                    String[] split2 = s.split ( "%" );
-                                    System.out.println ( split2[0]+"发来消息："+split2[1]);
-                                }
+                            String[] split = s2.split ( "^" );
+                            for (String s:split){
+                                String[] split1 = s.split ( "-" );
+                                System.out.println (split1[1]+"发来消息："+split1[2] );
                             }
                         }
                     }
@@ -81,8 +72,8 @@ public class client {
                     System.out.println ("读取异常" );
                 }
             }
-        }.start ();
-        new Thread (  ){//发消息线程
+        } ).start ();
+        new Thread ( new Runnable ( ) {//发消息线程
             @Override
             public void run() {
                 while (true){
@@ -132,7 +123,7 @@ public class client {
 
                 }
             }
-        }.start ();
+        } ).start ();
     }
 
     private static void show() {
