@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/web20181231" />
+    <file type="web" url="file://$PROJECT_DIR$/web20190106" />
+    <file type="web" url="file://$PROJECT_DIR$/web20190113" />
+    <file type="web" url="file://$PROJECT_DIR$/y2018m12d31" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/web20190106/pom.xml" />
+        <option value="$PROJECT_DIR$/web20181231/pom.xml" />
+        <option value="$PROJECT_DIR$/web20190113/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/web20181231/web20190113/pom.xml" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectRootManager">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

@@ -16,7 +16,8 @@ public class Reflect {
             @Override
             protected Class<?> findClass(String name) throws ClassNotFoundException {
                 try {
-                    FileInputStream in  = new FileInputStream("C:\\Users\\Administrator\\Desktop\\java\\20\\Treasure.class");
+                    FileInputStream in  = new FileInputStream("C:\\Users\\Administrator" +
+                            "\\Desktop\\java\\20\\Treasure.class");
                     byte[] bytes = new byte[1024*8];
                     int len = in.read(bytes);
 
